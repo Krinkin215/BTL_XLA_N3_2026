@@ -1,0 +1,4 @@
+﻿split,num_images,num_instances,primary_100
+train,398,17350,60
+val,130,5707,20
+test,142,6404,20

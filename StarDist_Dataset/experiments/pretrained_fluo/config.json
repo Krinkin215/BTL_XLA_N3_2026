@@ -1,0 +1,16 @@
+{
+  "mode": "pretrained_fixed_weights",
+  "proposed_model": "2D_versatile_fluo",
+  "model_selection_basis": "Single-channel fluorescent-nuclei model; visual modality review still required",
+  "manifest": "experiments/pretrained_fluo/manifest.csv",
+  "validation_images": 20,
+  "test_images": 20,
+  "training": false,
+  "fine_tuning": false,
+  "seed": 42,
+  "input": "normalized_path: float32 HxW, clipped P1/P99.8 per image; do not normalize twice",
+  "thresholds": "Start with model defaults; any changes must be selected on validation and frozen before test",
+  "independent_generalization_evaluation": false,
+  "reason": "Official StarDist documentation states both 2D_versatile_fluo and 2D_paper_dsb2018 were trained on a subset of DSB2018",
+  "official_source": "https://github.com/stardist/stardist#pretrained-models-for-2d"
+}

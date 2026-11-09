@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "checked_pairs": 670,
+  "image_copy_sha256": "PASS",
+  "uint16_tiff_roundtrip": "PASS",
+  "source_mask_reconstruction": "PASS",
+  "normalized_float32_range": "PASS",
+  "exact_duplicate_split_leakage": "NONE",
+  "split_counts": {
+    "train": 398,
+    "val": 130,
+    "test": 142
+  },
+  "discovered_samples": 670,
+  "excluded_samples": [],
+  "masks_checked": 29461,
+  "overlapping_masks_in_accepted": 0,
+  "empty_masks_in_accepted": 0,
+  "duplicate_pixel_groups": 0,
+  "appearance_counts": {
+    "grayscale_dark_background": 546,
+    "color": 108,
+    "grayscale_light_background": 16
+  },
+  "seed": 42,
+  "split_target": [
+    0.6,
+    0.2,
+    0.2
+  ],
+  "limitations": [
+    "No acquisition/source metadata grouping",
+    "Near-duplicates not checked",
+    "Pretrained training-set overlap not established",
+    "Appearance is not verified modality"
+  ],
+  "source": "C:\\Users\\ADMIN\\Downloads\\stage1_train.zip",
+  "source_archive_sha256": "dcb6edc2690f137406638b2309581a71522c4dff19157d118453b448dcddcb68",
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pillow": "12.3.0"
+  },
+  "focused_integrity_tests": "5 passed (test_dataset_integrity.py)",
+  "notebook_python_cells_syntax_checked": 7,
+  "notebook_execution": "Not executed in a Jupyter kernel; preparation script and exported data verified locally",
+  "pretrained_protocol": {
+    "mode": "pretrained_fixed_weights",
+    "proposed_model": "2D_versatile_fluo",
+    "model_selection_basis": "Single-channel fluorescent-nuclei model; visual modality review still required",
+    "manifest": "experiments/pretrained_fluo/manifest.csv",
+    "validation_images": 20,
+    "test_images": 20,
+    "training": false,
+    "fine_tuning": false,
+    "seed": 42,
+    "input": "normalized_path: float32 HxW, clipped P1/P99.8 per image; do not normalize twice",
+    "thresholds": "Start with model defaults; any changes must be selected on validation and frozen before test",
+    "independent_generalization_evaluation": false,
+    "reason": "Official StarDist documentation states both 2D_versatile_fluo and 2D_paper_dsb2018 were trained on a subset of DSB2018",
+    "official_source": "https://github.com/stardist/stardist#pretrained-models-for-2d"
+  }
+}
