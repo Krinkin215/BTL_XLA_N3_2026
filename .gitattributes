@@ -1,0 +1,17 @@
+* text=auto
+.gitattributes text eol=lf
+.gitignore text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.ipynb text eol=lf
+*.csv text eol=lf
+*.txt text eol=lf
+*.sha256 text eol=lf
+*.png binary
+*.tif binary
+*.tiff binary
+*.npy binary
+
+# Preserve published dataset bytes so checksums remain valid after clone
+StarDist_Dataset/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
