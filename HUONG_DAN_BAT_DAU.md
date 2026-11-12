@@ -1,5 +1,10 @@
 # Hướng dẫn sử dụng dự án StarDist
 
+Để chạy mô hình và so sánh thuật toán, đọc [HUONG_DAN_CHAY_STARDIST.md](HUONG_DAN_CHAY_STARDIST.md)
+và chạy `python run_experiment.py` trong môi trường đã cài `requirements-stardist.txt`.
+Kết quả nằm ở `results/stardist_pretrained/`; phương pháp và kết luận nằm trong
+[BAO_CAO_KY_THUAT.md](BAO_CAO_KY_THUAT.md). Các mục dưới đây mô tả gói chuẩn bị dữ liệu.
+
 Các sản phẩm chính nằm trong **StarDist_Dataset/**. Dữ liệu gốc trong Downloads được giữ nguyên. Lần chạy hoàn chỉnh đọc từ `C:\Users\ADMIN\Downloads\stage1_train.zip` để giảm thời gian mở hàng chục nghìn tệp nhỏ.
 
 ## 1. Tổng quan quy trình
@@ -46,4 +51,4 @@ Thí nghiệm sử dụng pretrained, không huấn luyện hoặc fine-tune. M�
 
 Không chọn tham số từ test. Theo tài liệu StarDist, cả `2D_versatile_fluo` và `2D_paper_dsb2018` đã học một phần DSB2018; không gọi kết quả trên bộ này là đánh giá tổng quát hóa độc lập khi chưa đối chiếu dữ liệu huấn luyện gốc. Bản chia hiện tại chưa sử dụng metadata thí nghiệm và chưa kiểm tra ảnh gần trùng; các giới hạn đã được ghi trong báo cáo. Nguồn: https://github.com/stardist/stardist#pretrained-models-for-2d.
 
-Mã chuẩn bị dữ liệu nằm ở `prepare_dataset.py`; các kiểm tra bảo toàn nhãn nằm ở `test_dataset_integrity.py`. Gói hiện tại gồm dữ liệu đã xử lý, tài liệu và ví dụ sử dụng pretrained; chưa chứa kết quả chạy StarDist hoặc Otsu/Watershed.
+Mã chuẩn bị dữ liệu nằm ở `prepare_dataset.py`; các kiểm tra bảo toàn nhãn nằm ở `test_dataset_integrity.py`. Gói `StarDist_Dataset/` giữ nguyên dữ liệu đã xử lý, tài liệu và ví dụ pretrained của bản bàn giao dữ liệu. Mã thực nghiệm mới là `run_experiment.py`, với kiểm tra trong `test_experiment.py` và kết quả trong `results/stardist_pretrained/` ở thư mục gốc repo.

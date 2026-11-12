@@ -1,6 +1,28 @@
 # StarDist — Phân đoạn nhân tế bào
 
-Dự án chuẩn bị dữ liệu DSB2018/BBBC038 cho thí nghiệm phân đoạn từng đối tượng bằng StarDist pretrained và so sánh với Otsu, Watershed.
+Dự án chuẩn bị dữ liệu DSB2018/BBBC038 và chạy phân đoạn từng đối tượng bằng StarDist pretrained, so sánh với Otsu và Watershed.
+
+## Chạy thực nghiệm — phần Đức
+
+```bash
+python3.11 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements-stardist.txt
+python -m unittest test_dataset_integrity test_experiment -v
+python run_experiment.py
+```
+
+Quy trình chọn ngưỡng trên 20 ảnh validation, chốt cấu hình rồi đánh giá 20 ảnh test.
+Mỗi lần chạy xuất mask TIFF giữ ID instance, cấu hình, TP/FP/FN, precision/recall/F1,
+matching accuracy, thời gian từng ảnh và hình minh họa. Không huấn luyện/fine-tune.
+
+- [Hướng dẫn chạy, Windows và Colab/Kaggle](HUONG_DAN_CHAY_STARDIST.md).
+- [Notebook thực nghiệm](compare%20stardist%20-%20otsu%20-%20watershred.ipynb), dùng chung `run_experiment.py`.
+- [Phương pháp và kết luận kỹ thuật](BAO_CAO_KY_THUAT.md).
+- [Kết quả chạy và bảng so sánh](results/stardist_pretrained/KET_QUA.md).
+
+Đầu ra mặc định ở `results/stardist_pretrained/`, nằm ngoài gói dữ liệu để giữ nguyên
+checksum bàn giao. Chọn `--output results/run_02` khi chạy lại; không ghi đè lần chạy trước.
 
 ## Dữ liệu
 
@@ -22,7 +44,7 @@ StarDist_Dataset/
   experiments/pretrained_fluo/
   experiments/grayscale100/
   splits/
-  results/
+  results/                         # QC dữ liệu
   Chuan_bi_du_lieu.ipynb
   dataset_manifest.csv
   instance_mapping.csv
@@ -31,6 +53,12 @@ prepare_dataset.py
 test_dataset_integrity.py
 finalize_delivery.py
 requirements.txt
+requirements-stardist.txt
+run_experiment.py
+test_experiment.py
+results/stardist_pretrained/        # Mask, bảng điểm và hình thực nghiệm
+HUONG_DAN_CHAY_STARDIST.md
+BAO_CAO_KY_THUAT.md
 HUONG_DAN_BAT_DAU.md
 ```
 
@@ -39,7 +67,7 @@ HUONG_DAN_BAT_DAU.md
 ## Bắt đầu
 
 ```bash
-git clone --branch kien git@github.com:Krinkin215/BTL_XLA_N3_2026.git
+git clone git@github.com:Krinkin215/BTL_XLA_N3_2026.git
 cd BTL_XLA_N3_2026
 python -m pip install -r requirements.txt
 python -m unittest test_dataset_integrity -v
@@ -60,15 +88,13 @@ python prepare_dataset.py --raw "PATH_TO/stage1_train.zip" --out "StarDist_Datas
 
 ## Nhánh Git
 
-- `main`: chỉ có commit khởi tạo rỗng, chưa chứa dự án.
-- `develop`: nhánh tích hợp, bắt đầu từ cùng commit khởi tạo.
-- `kien`: nhánh phát triển dự án, tách từ `develop` theo tên nhánh được sử dụng trong repo.
-
-Luồng tích hợp: `kien` → pull request vào `develop` → phát hành vào `main`. Hiện chưa merge dự án vào `develop` hoặc `main`. Commit dùng định dạng Conventional Commits, ví dụ `feat(data): ...`, `fix(data): ...`, `docs: ...`.
+Nhánh `main` hiện có dữ liệu đã chuẩn bị và notebook so sánh. Nhóm có thể tiếp tục
+dùng nhánh theo thành viên, tích hợp qua pull request. Commit dùng định dạng
+Conventional Commits, ví dụ `feat(exp): ...`, `fix(data): ...`, `docs: ...`.
 
 ## Giới hạn và nguồn
 
-Mô hình đề xuất `2D_versatile_fluo` cần ảnh nhân huỳnh quang đơn kênh; phân loại ảnh xám nền tối trong dữ liệu mới dựa trên diện mạo. Cả `2D_versatile_fluo` và `2D_paper_dsb2018` đã học một phần DSB2018, nên bản test cục bộ chưa chứng minh đánh giá tổng quát hóa độc lập. Gói hiện tại chưa chứa kết quả chạy các thuật toán.
+Mô hình `2D_versatile_fluo` dành cho ảnh nhân huỳnh quang đơn kênh; phân loại ảnh xám nền tối trong dữ liệu mới dựa trên diện mạo. Cả `2D_versatile_fluo` và `2D_paper_dsb2018` đã học một phần DSB2018, nên bản test cục bộ chưa chứng minh đánh giá tổng quát hóa độc lập. Kết quả thực nghiệm nằm trong `results/stardist_pretrained/`; `StarDist_Dataset/results/` chỉ chứa hình kiểm tra dữ liệu. Matching accuracy = TP/(TP+FP+FN), không phải COCO AP.
 
 - [BBBC038v1](https://bbbc.broadinstitute.org/BBBC038): nguồn dữ liệu, CC0.
 - [Caicedo et al. (2019)](https://doi.org/10.1038/s41592-019-0612-7): bài báo DSB2018.

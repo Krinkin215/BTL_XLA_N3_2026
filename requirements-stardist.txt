@@ -1,0 +1,14 @@
+# Tested with Python 3.11. Keep dataset preparation dependencies separate.
+-r requirements.txt
+numpy==1.26.4
+tensorflow==2.16.2
+tf-keras==2.16.0
+stardist==0.9.2
+csbdeep==0.8.2
+scikit-image==0.24.0
+scipy==1.14.1
+matplotlib>=3.8,<4
+pandas>=2.2,<3
+tifffile>=2024.1,<2026
+tabulate>=0.9,<1
+ipython>=8,<10
