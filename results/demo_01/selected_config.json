@@ -1,0 +1,59 @@
+{
+  "model": "2D_versatile_fluo",
+  "seed": 42,
+  "training": false,
+  "fine_tuning": false,
+  "selection_split": "val",
+  "selection_iou_thresholds": [
+    0.5
+  ],
+  "selection_metric": "matching_accuracy",
+  "stardist_tuned": true,
+  "nms_grid": [
+    0.3,
+    0.4,
+    0.5
+  ],
+  "model_default_thresholds": {
+    "prob": 0.479071463157368,
+    "nms": 0.3
+  },
+  "methods": {
+    "stardist": {
+      "prob_thresh": 0.47576062024687477,
+      "nms_thresh": 0.3
+    },
+    "otsu": {
+      "sigma": 0.8,
+      "min_size": 20
+    },
+    "watershed": {
+      "sigma": 1.0,
+      "min_size": 30,
+      "min_distance": 9
+    }
+  },
+  "validation_ids": [
+    "06c779330d6d3447be21df2b9f05d1088f5b3b50dc48724fc130b1fd2896a68c",
+    "08151b19806eebd58e5acec7e138dbfbb1761f41a1ab9620466584ecc7d5fada",
+    "0b0d577159f0d6c266f360f7b8dfde46e16fa665138bf577ec3c6f9c70c0cd1e",
+    "449f41710769584b5e4eca8ecb4c76d5272605f27da2949e6285de0860d2cbc0",
+    "49edc2f7715100fb0390916e52b3fd11a921f02e59509dc987f67840a36250fc",
+    "514ccfc78cb55988a238d3ac9dc83460aa88382c95d56bcc0559962d9fe481ef",
+    "564fa390d9a9c26f986bf860d9091cbd84244bc1c8e3c9369f2f2e5b5fd99b92",
+    "62057502c387145ed4f8f7f0d5e5bedcb72d3bcec15fa71cb0310dee32871461",
+    "623cf6987b3fac8f384c09f40d98c5e739c097aa9a9627054542aa27f7d38db1",
+    "6b72b61b80060a9e79a4747f9c5d5af135af9db466681c2d1086f784c7130699",
+    "6eefe1f0d9c2d2c2380db3ecd2113a566ace7dfc917687bb5033b4af5b8293aa",
+    "76c4f14e35210f87a29e93c46dbb25c8f5dc5c04d1d3134672708bcdfbc7e959",
+    "79dfcbc9361edd3a1ffe81a5bdaa22a197ad1341f3fa64b86a646c2607d6b324",
+    "7ac468eb217b7058d22c1711285d21949b4121bf3fa3217e3e51453666ebecff",
+    "97126a9791f0c1176e4563ad679a301dac27c59011f579e808bbd6e9f4cd1034",
+    "a02ec007ae8feddb758078b1dfb8010c26886fd3c8babdc308ead8b4a63acbdb",
+    "bff985591dd5d6303018a6e9a3dcfb336771a414ad4605c24ce1c1155fc86a96",
+    "c8ca945abc29d262a5525e4c2585541bba33fa77c86a47c94575d8e5b54c83fb",
+    "f0c9f135c62572f3669a75b2c735e4477dc77fac85e653426ee2b3bcfbed7aaf",
+    "fd8065bcb1afdbed19e028465d5d00cd2ecadc4558de05c6fa28bea3c817aa22"
+  ],
+  "frozen_at": "2026-11-12T23:43:10.864761+07:00"
+}
